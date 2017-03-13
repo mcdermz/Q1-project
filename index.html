@@ -4,14 +4,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Arpeggio Simon</title>
-    <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/style.css">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-    <script src="game-logic/game-logic.js"></script>
-    <script src="gui/gui.js"></script>
+    <script defer src="game-logic/game-logic.js"></script>
+    <script defer src="gui/gui.js"></script>
   </head>
   <body>
-    SANITY
+    <div class="container">
+      <div class="game-gui">
+        <div class="row">
+          <div id="1" class="col s4 offset-s2 red">
+            <h1 class="center-align">1</h1>
+          </div>
+          <div id="2" class="col s4 blue">
+            <h1 class="center-align">2</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div id="3" class="col s4 offset-s1 green">
+            <h1 class="center-align">3</h1>
+          </div>
+          <div class="col s2 "></div>
+          <div id="4" class="col s4 yellow">
+            <h1 class="center-align">4</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div id="5" class="col s4 offset-s4 orange">
+            <h1 class="center-align">5</h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
