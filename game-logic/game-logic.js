@@ -2,7 +2,7 @@ console.log('game-logic sanity check!');
 
 // let storedPattern = [];
 let i;
-let uI;
+let uI = true;
 let userRecord;
 let userPattern;
 
