@@ -30,10 +30,11 @@ $('body').on('keydown keyup', function (e){
   hotKeysUpDown(e);
 });
 
-$('body').on('keypress', function (e) {
+$('body').on('keyup', function (e) {
   if (userRecord) {
     hotKeysPress(e);
     startUserPattern();
+    console.log(e.which);
   }
 });
 
@@ -44,6 +45,11 @@ function hotKeysPress(e) {
     97: '3',
     115: '5',
     100: '4',
+    87: '1',
+    69: '2',
+    65: '3',
+    83: '5',
+    68: '4',
   };
   let keyID = keyAction[e.which];
   if (typeof keyID != 'undefined' && uI) {
