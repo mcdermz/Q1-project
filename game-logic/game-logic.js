@@ -22,6 +22,7 @@ function reset() {
 
 function nextLevel(){
   console.log('You win! Get ready for level ' + level + '!')
+  $('#start-btn').text('LEVEL ' + level + ': GO!')
   window.boxPattern = patternIncrement(window.storedPattern)
 }
 
