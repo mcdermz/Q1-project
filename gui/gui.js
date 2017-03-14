@@ -3,12 +3,13 @@ console.log('gui sanity check!');
 $('#start-btn').on('click', function() {
     i = 0;
     startGame(i);
-  });
+});
 
 $('.game-gui').on('mousedown', '.col', function () {
   if (uI)
     $(this).toggleClass('accent-1')
-})
+});
+
 $('.game-gui').on('mouseup', '.col', function () {
   if (uI)
     $(this).toggleClass('accent-1')
@@ -16,7 +17,7 @@ $('.game-gui').on('mouseup', '.col', function () {
       userPattern.push($(this).attr('id'));
       console.log(userPattern);
     }
-})
+});
 
 $('body').on('keydown keyup', function (e){
   hotKeysUpDown(e);
@@ -24,7 +25,7 @@ $('body').on('keydown keyup', function (e){
 
 $('body').on('keypress', function (e) {
   if (userRecord) hotKeysPress(e);
-})
+});
 
 function hotKeysPress(e) {
   let keyAction = {
@@ -38,6 +39,9 @@ function hotKeysPress(e) {
   if (typeof keyID != 'undefined' && uI) {
     userPattern.push(keyID);
     console.log(userPattern);
+    if (userPattern.length === boxPattern.length){
+      alert('pattern is complete!')
+    }
   }
 }
 

@@ -5,11 +5,13 @@ let boxPattern = [1,2,3,4];
 let i;
 let uI = true;
 let userRecord = false;
+let userPattern = [];
 
-function startUserPattern () {
-  let userPattern = [];
-  let userRecord = true;
-}
+// function startUserPattern () {
+//   console.log('Start!');
+//
+//   userRecord = false;
+// }
 
 function startGame(i){
   uI = false;
@@ -29,6 +31,7 @@ function startGame(i){
     } else{
       alert('pattern is done, your turn!')
       uI = true;
+      userRecord = true;
     }
   });
 }
