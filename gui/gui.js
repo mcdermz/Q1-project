@@ -27,15 +27,11 @@ function hotKeysPress(e) {
     115: '5',
     100: '4',
   };
-  let key = e.which;
-  console.log(key);
-  let keyID = keyAction[key];
+  let keyID = keyAction[e.which];
   if (typeof keyID != 'undefined' && uI) {
     userPattern.push(keyID);
-    console.log(userPattern);
   }
 }
-
 
 function hotKeysUpDown(e) {
   let keyAction = {
@@ -45,8 +41,7 @@ function hotKeysUpDown(e) {
     83: '5',
     68: '4',
   };
-  let key = e.which;
-  let boxID = '#' + keyAction[key];
+  let boxID = '#' + keyAction[e.which];
   if (typeof boxID != 'undefined' && uI) {
     $(boxID).toggleClass('accent-1');
   }
