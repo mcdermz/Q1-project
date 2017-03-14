@@ -12,15 +12,32 @@ $('.game-gui').on('mouseup', '.col', function () {
 })
 
 $('body').on('keydown keyup', function (e){
-  hotKeys(e);
+  hotKeysUpDown(e);
 });
 
-// $('body').on('keypress', function (e) {
-//
-// })
+$('body').on('keypress', function (e) {
+  hotKeysPress(e);
+})
+
+function hotKeysPress(e) {
+  let keyAction = {
+    119: '1',
+    101: '2',
+    97: '3',
+    115: '5',
+    100: '4',
+  };
+  let key = e.which;
+  console.log(key);
+  let keyID = keyAction[key];
+  if (typeof keyID != 'undefined' && uI) {
+    userPattern.push(keyID);
+    console.log(userPattern);
+  }
+}
 
 
-function hotKeys(e) {
+function hotKeysUpDown(e) {
   let keyAction = {
     87: '1',
     69: '2',
@@ -29,10 +46,8 @@ function hotKeys(e) {
     68: '4',
   };
   let key = e.which;
-  let keyID = '#' + keyAction[key];
-  let boxID;
-  if (typeof keyID != 'undefined' && uI) {
-    boxID = keyID;
+  let boxID = '#' + keyAction[key];
+  if (typeof boxID != 'undefined' && uI) {
     $(boxID).toggleClass('accent-1');
   }
 }
