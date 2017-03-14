@@ -39,8 +39,14 @@ function hotKeysPress(e) {
   if (typeof keyID != 'undefined' && uI) {
     userPattern.push(keyID);
     console.log(userPattern);
-    if (userPattern.length === boxPattern.length){
-      alert('pattern is complete!')
+    if (userPattern.length !== boxPattern.length){
+      for (i in userPattern) {
+        if (userPattern[i] != boxPattern[i]){
+          alert('You lose! try again')
+        }
+      }
+    } else {
+      alert('you win!')
     }
   }
 }
