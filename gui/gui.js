@@ -15,7 +15,9 @@ $('.game-gui').on('mouseup', '.col', function () {
     $(this).toggleClass('accent-1')
     if (userRecord){
       userPattern.push($(this).attr('id'));
+      startUserPattern();
       console.log(userPattern);
+
     }
 });
 
@@ -24,7 +26,10 @@ $('body').on('keydown keyup', function (e){
 });
 
 $('body').on('keypress', function (e) {
-  if (userRecord) hotKeysPress(e);
+  if (userRecord) {
+    hotKeysPress(e);
+    startUserPattern();
+  }
 });
 
 function hotKeysPress(e) {
@@ -39,15 +44,6 @@ function hotKeysPress(e) {
   if (typeof keyID != 'undefined' && uI) {
     userPattern.push(keyID);
     console.log(userPattern);
-    if (userPattern.length !== boxPattern.length){
-      for (i in userPattern) {
-        if (userPattern[i] != boxPattern[i]){
-          alert('You lose! try again')
-        }
-      }
-    } else {
-      alert('you win!')
-    }
   }
 }
 

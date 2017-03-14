@@ -1,17 +1,23 @@
 console.log('game-logic sanity check!');
 
-let boxPattern = [1,2,3,4];
+let boxPattern = [1,2,3,4,3,2,1];
 
 let i;
 let uI = true;
 let userRecord = false;
 let userPattern = [];
 
-// function startUserPattern () {
-//   console.log('Start!');
-//
-//   userRecord = false;
-// }
+function startUserPattern () {
+  if (userPattern.length !== boxPattern.length){
+    for (i in userPattern) {
+      if (userPattern[i] != boxPattern[i]){
+        alert('You lose! try again')
+      }
+    }
+  } else {
+    alert('you win!')
+  }
+}
 
 function startGame(i){
   uI = false;
