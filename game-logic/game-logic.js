@@ -21,8 +21,6 @@ function patternIncrement (p){
   return p.slice(begin, end)
 }
 
-
-
 function reset() {
   $('.game-gui div.col').removeClass('accent-1')
   uI = true;
@@ -31,7 +29,7 @@ function reset() {
 }
 
 function nextLevel(){
-  alert('You win! Get ready for level ' + level + '!')
+  console.log('You win! Get ready for level ' + level + '!')
   boxPattern = patternIncrement(storedPattern)
 }
 
@@ -39,12 +37,12 @@ function startUserPattern () {
   if (userPattern.length !== boxPattern.length){
     for (i in userPattern) {
       if (userPattern[i] != boxPattern[i]){
-        alert('You lose!')
+        console.log('You lose!')
         reset();
       }
     }
   } else if (userPattern[userPattern.length-1] != boxPattern[boxPattern.length-1]){
-    alert('You lose!')
+    console.log('You lose!')
     reset();
   }
   else {
@@ -69,7 +67,7 @@ function startGame(i){
     if (i<boxPattern.length){
       startGame(i);
     } else{
-      alert('pattern is done, your turn!')
+      console.log('pattern is done, your turn!')
       uI = true;
       userRecord = true;
     }
