@@ -7,8 +7,10 @@ $('.game-gui').on('mousedown', '.col', function () {
 $('.game-gui').on('mouseup', '.col', function () {
   if (uI)
     $(this).toggleClass('accent-1')
-    userPattern.push($(this).attr('id'));
-    console.log(userPattern);
+    if (userRecord){
+      userPattern.push($(this).attr('id'));
+      console.log(userPattern);
+    }
 })
 
 $('body').on('keydown keyup', function (e){
@@ -16,7 +18,7 @@ $('body').on('keydown keyup', function (e){
 });
 
 $('body').on('keypress', function (e) {
-  hotKeysPress(e);
+  if (userRecord) hotKeysPress(e);
 })
 
 function hotKeysPress(e) {
@@ -30,6 +32,7 @@ function hotKeysPress(e) {
   let keyID = keyAction[e.which];
   if (typeof keyID != 'undefined' && uI) {
     userPattern.push(keyID);
+    console.log(userPattern);
   }
 }
 
