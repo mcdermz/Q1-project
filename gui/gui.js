@@ -1,7 +1,12 @@
 console.log('gui sanity check!');
 
+$(document).on('load', function () {
+  reset();
+})
+
 $('#start-btn').on('click', function() {
     i = 0;
+    reset();
     startGame(i);
 });
 
