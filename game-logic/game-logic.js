@@ -1,6 +1,6 @@
 console.log('game-logic sanity check!');
 
-let storedPattern = [1,2,3,4,5,6,7,8,9];
+let storedPattern = [1,2,3,4,5,4,3,2,1];
 let i;
 let uI;
 let userRecord;
@@ -20,9 +20,6 @@ function patternIncrement (p){
   level++;
   return p.slice(begin, end)
 }
-console.log(patternIncrement(storedPattern));
-console.log(patternIncrement(storedPattern));
-console.log(patternIncrement(storedPattern));
 
 
 
@@ -34,8 +31,8 @@ function reset() {
 }
 
 function nextLevel(){
-  level++;
   alert('You win! Get ready for level ' + level + '!')
+  boxPattern = patternIncrement(storedPattern)
 }
 
 function startUserPattern () {
