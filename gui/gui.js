@@ -1,5 +1,10 @@
 console.log('gui sanity check!');
 
+$('#start-btn').on('click', function() {
+    i = 0;
+    startGame(i);
+  });
+
 $('.game-gui').on('mousedown', '.col', function () {
   if (uI)
     $(this).toggleClass('accent-1')

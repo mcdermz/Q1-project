@@ -1,13 +1,14 @@
 console.log('game-logic sanity check!');
 
-let boxPattern = [1,4,2,3,4,5,3,3,2,4,4,2,1];
+let boxPattern = [1,2,3,4];
 
 let i;
 let uI = true;
-let userPattern = [];
 let userRecord = false;
-function startUserPattern () {
 
+function startUserPattern () {
+  let userPattern = [];
+  let userRecord = true;
 }
 
 function startGame(i){
@@ -31,8 +32,3 @@ function startGame(i){
     }
   });
 }
-
-$('#start-btn').on('click', function() {
-    i = 0;
-    startGame(i);
-  });
