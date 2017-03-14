@@ -10,10 +10,10 @@ function startGame(i){
   let boxActive = `#${boxPattern[i]}`;
   $.when($(boxActive)
     .animate({opacity: '1'}, 300, 'linear', function() {
-      $(this).addClass('accent-1');
+      $(this).toggleClass('accent-1');
     })
     .animate({opacity: '1'}, 300, 'linear', function() {
-      $(this).removeClass('accent-1')
+      $(this).toggleClass('accent-1')
     })
   ).done(function(){
     i++;
