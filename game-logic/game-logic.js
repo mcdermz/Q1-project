@@ -4,6 +4,7 @@ let boxPattern = [1,4,2,3];
 
 let i;
 let uI = true;
+// let recordUser = false;
 
 function startGame(i){
   uI = false;
@@ -22,6 +23,7 @@ function startGame(i){
     } else{
       alert('pattern is done, your turn!')
       uI = true;
+      // recordUser = true;
     }
   });
 }
