@@ -74,15 +74,14 @@ function hotKeysUpDown(e) {
     70: '4',
     71: '5',
   };
-  let boxID = '#' + keyAction[e.which];
-  if (typeof boxID != 'undefined' && uI) {
+  let toneKey = keyAction[e.which]
+  let boxID = '#' + toneKey;
+  if (uI) {
     $(boxID).toggleClass('lighten-5');
-    if (e.type === 'keydown') {
-      playTone(toneObject[keyAction[e.which]])
-    }
-    if (e.type === 'keyup'){
-      stopTone(toneObject[keyAction[e.which]])
+    if (e.type === 'keydown' && toneKey !== undefined) {
+      playTone(toneObject[toneKey])
+    }else if (toneKey !== undefined){
+      stopTone(toneObject[toneKey])
     }
   }
-  console.log(e.type);
 }
