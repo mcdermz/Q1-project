@@ -37,16 +37,11 @@ $('body').on('keyup', function (e) {
 
 function hotKeysPress(e) {
   let keyAction = {
-    119: '1',
-    101: '2',
-    97: '3',
-    115: '5',
-    100: '4',
-    87: '1',
-    69: '2',
-    65: '3',
-    83: '5',
-    68: '4',
+    65: '1',
+    83: '2',
+    68: '3',
+    70: '4',
+    71: '5',
   };
   let keyID = keyAction[e.which];
   if (typeof keyID != 'undefined' && uI) {
@@ -56,13 +51,14 @@ function hotKeysPress(e) {
 
 function hotKeysUpDown(e) {
   let keyAction = {
-    87: '1',
-    69: '2',
-    65: '3',
-    83: '5',
-    68: '4',
+    65: '1',
+    83: '2',
+    68: '3',
+    70: '4',
+    71: '5',
   };
   let boxID = '#' + keyAction[e.which];
+  console.log(e.which);
   if (typeof boxID != 'undefined' && uI) {
     $(boxID).toggleClass('lighten-5');
   }
