@@ -1,5 +1,6 @@
 console.log('gui sanity check!');
 
+
 $(document).on('load', function () {
   reset();
 })
@@ -8,6 +9,7 @@ $('#start-btn').on('click', function () {
   i = 0;
   reset();
   startGame(i);
+  $('#hint-btn').text('hints left: 2').removeClass('scale-out').addClass('scale-in');
 });
 
 $('.game-gui').on('mousedown', '.col', function () {

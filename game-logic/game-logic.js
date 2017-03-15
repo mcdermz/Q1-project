@@ -1,19 +1,21 @@
 console.log('game-logic sanity check!');
 
+let hints = 2;
 let i;
 let uI = true;
 let userRecord;
 let userPattern;
 
 function reset() {
-  $('.game-gui div.col').removeClass('lighten-5')
   uI = true;
   userRecord = false;
   userPattern = [];
+  $('.game-gui div.col').removeClass('lighten-5');
 }
 
 function nextLevel() {
   console.log('You win! Get ready for level ' + level + '!')
+  hints = 2;
   $('#start-btn').text('LEVEL ' + level + ': GO!')
   window.boxPattern = patternIncrement(window.storedPattern)
 }
@@ -61,3 +63,12 @@ function startGame(i) {
     }
   });
 }
+
+$('#hint-btn').on('click', function () {
+  startGame(i);
+  hints--;
+  $(this).text('hints left: ' + hints);
+  if (hints <= 0) {
+    $(this).removeClass('scale-in').addClass('scale-out')
+  }
+})
