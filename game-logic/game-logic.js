@@ -38,18 +38,20 @@ function startUserPattern() {
 
 function startGame(i) {
   uI = false;
-  let boxActive = `#${window.boxPattern[i]}`;
+  let boxNum = window.boxPattern[i]
+  let boxActive = `#${boxNum}`;
   $.when($(boxActive)
     .animate({
       opacity: '1'
     }, 450, 'linear', function () {
       $(this).toggleClass('lighten-5');
+      playTone(toneObject[boxNum])
     })
     .animate({
       opacity: '1'
     }, 450, 'linear', function () {
       $(this).toggleClass('lighten-5')
-
+      stopTone(toneObject[boxNum])
     })
   ).done(function () {
     i++;
