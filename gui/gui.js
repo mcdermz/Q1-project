@@ -77,5 +77,12 @@ function hotKeysUpDown(e) {
   let boxID = '#' + keyAction[e.which];
   if (typeof boxID != 'undefined' && uI) {
     $(boxID).toggleClass('lighten-5');
+    if (e.type === 'keydown') {
+      playTone(toneObject[keyAction[e.which]])
+    }
+    if (e.type === 'keyup'){
+      stopTone(toneObject[keyAction[e.which]])
+    }
   }
+  console.log(e.type);
 }
