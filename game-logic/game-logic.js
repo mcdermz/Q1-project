@@ -6,7 +6,7 @@ let userRecord;
 let userPattern;
 
 function reset() {
-  $('.game-gui div.col').removeClass('accent-1')
+  $('.game-gui div.col').removeClass('lighten-5')
   uI = true;
   userRecord = false;
   userPattern = [];
@@ -42,12 +42,12 @@ function startGame(i) {
     .animate({
       opacity: '1'
     }, 300, 'linear', function () {
-      $(this).toggleClass('accent-1');
+      $(this).toggleClass('lighten-5');
     })
     .animate({
       opacity: '1'
     }, 300, 'linear', function () {
-      $(this).toggleClass('accent-1')
+      $(this).toggleClass('lighten-5')
 
     })
   ).done(function () {

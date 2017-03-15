@@ -12,12 +12,12 @@ $('#start-btn').on('click', function () {
 
 $('.game-gui').on('mousedown', '.col', function () {
   if (uI)
-    $(this).toggleClass('accent-1')
+    $(this).toggleClass('lighten-5')
 });
 
 $('.game-gui').on('mouseup', '.col', function () {
   if (uI)
-    $(this).toggleClass('accent-1')
+    $(this).toggleClass('lighten-5')
   if (userRecord) {
     userPattern.push($(this).attr('id'));
     startUserPattern();
@@ -64,6 +64,6 @@ function hotKeysUpDown(e) {
   };
   let boxID = '#' + keyAction[e.which];
   if (typeof boxID != 'undefined' && uI) {
-    $(boxID).toggleClass('accent-1');
+    $(boxID).toggleClass('lighten-5');
   }
 }
