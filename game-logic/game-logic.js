@@ -15,8 +15,9 @@ function reset() {
 
 function nextLevel() {
   console.log('You win! Get ready for level ' + level + '!')
+  $('#start-btn').removeClass('scale-out').addClass('scale-in').text('LEVEL ' + level + ': GO!');
+  $('#hint-btn').removeClass('scale-in').addClass('scale-out');
   hints = 2;
-  $('#start-btn').text('LEVEL ' + level + ': GO!')
   window.boxPattern = patternIncrement(window.storedPattern)
 }
 
@@ -63,12 +64,3 @@ function startGame(i) {
     }
   });
 }
-
-$('#hint-btn').on('click', function () {
-  startGame(i);
-  hints--;
-  $(this).text('hints left: ' + hints);
-  if (hints <= 0) {
-    $(this).removeClass('scale-in').addClass('scale-out')
-  }
-})

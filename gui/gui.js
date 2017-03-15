@@ -5,12 +5,9 @@ $(document).on('load', function () {
   reset();
 })
 
-$('#start-btn').on('click', function () {
-  i = 0;
-  reset();
-  startGame(i);
-  $('#hint-btn').text('hints left: 2').removeClass('scale-out').addClass('scale-in');
-});
+$('#start-btn').on('click', startButton);
+
+$('#hint-btn').on('click', hintButton)
 
 $('.game-gui').on('mousedown', '.col', function () {
   if (uI)
@@ -37,6 +34,23 @@ $('body').on('keyup', function (e) {
   }
 });
 
+function startButton() {
+  i = 0;
+  reset();
+  startGame(i);
+  $('#hint-btn').text('hints left: 2').removeClass('scale-out').addClass('scale-in');
+  $(this).addClass('scale-out').removeClass('scale-in');
+}
+
+function hintButton() {
+  startGame(i);
+  hints--;
+  $(this).text('hints left: ' + hints);
+  if (hints <= 0) {
+    $(this).removeClass('scale-in').addClass('scale-out')
+  }
+}
+
 function hotKeysPress(e) {
   let keyAction = {
     65: '1',
@@ -60,7 +74,6 @@ function hotKeysUpDown(e) {
     71: '5',
   };
   let boxID = '#' + keyAction[e.which];
-  console.log(e.which);
   if (typeof boxID != 'undefined' && uI) {
     $(boxID).toggleClass('lighten-5');
   }
