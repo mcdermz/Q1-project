@@ -41,12 +41,12 @@ function startGame(i) {
   $.when($(boxActive)
     .animate({
       opacity: '1'
-    }, 300, 'linear', function () {
+    }, 450, 'linear', function () {
       $(this).toggleClass('lighten-5');
     })
     .animate({
       opacity: '1'
-    }, 300, 'linear', function () {
+    }, 450, 'linear', function () {
       $(this).toggleClass('lighten-5')
 
     })
