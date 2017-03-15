@@ -1,3 +1,7 @@
 .game-gui div.col.s4 {
   height: auto;
 }
+
+.game-gui {
+  margin-top: 5rem;
+}
