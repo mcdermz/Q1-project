@@ -25,13 +25,11 @@ function startUserPattern() {
   if (userPattern.length !== window.boxPattern.length) {
     for (i in userPattern) {
       if (userPattern[i] != window.boxPattern[i]) {
-        console.log('You lose!')
-        reset();
+        loseGame();
       }
     }
   } else if (userPattern[userPattern.length - 1] != window.boxPattern[window.boxPattern.length - 1]) {
-    console.log('You lose!')
-    reset();
+    loseGame();
   } else {
     nextLevel();
     reset();
@@ -62,5 +60,16 @@ function startGame(i) {
       uI = true;
       userRecord = true;
     }
+  });
+}
+
+function loseGame() {
+  console.log('You lose!');
+  $('#hint-btn').addClass('scale-out').removeClass('scale-in');
+  $('#loser-btn').addClass('scale-in').removeClass('scale-out').on('click', function () {
+    reset();
+    level = 1;
+    $('#start-btn').addClass('scale-in').removeClass('scale-out').text('START');
+    $(this).addClass('scale-out').removeClass('scale-in');
   });
 }

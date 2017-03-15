@@ -1,6 +1,6 @@
-console.log('apis sanity!!!')
+console.log('apis sanity!!!');
 
-window.storedPattern
+window.storedPattern;
 
 $.ajax({
   method: 'POST',
@@ -8,7 +8,7 @@ $.ajax({
   data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"00000000-0000-0000-0000-000000000000","n":55,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
   dataType: 'json',
 }).then( function (data){
-  getRandomPattern(data)
+  getRandomPattern(data);
 }).catch(function (err) {
   console.log(err);
 });
@@ -23,11 +23,11 @@ function patternIncrement(p) {
   end = begin + level + 1;
   initial = begin;
   level++;
-  return p.slice(begin, end)
+  return p.slice(begin, end);
 }
 
 function getRandomPattern (data) {
-  window.storedPattern = data.result.random.data
+  window.storedPattern = data.result.random.data;
   window.boxPattern = patternIncrement(window.storedPattern);
   if (data.result.requestsLeft < 50000){
     console.error('Requests left: ' + data.result.requestsLeft);

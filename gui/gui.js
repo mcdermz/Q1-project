@@ -3,24 +3,25 @@ console.log('gui sanity check!');
 
 $(document).on('load', function () {
   reset();
-})
+});
 
 $('#start-btn').on('click', startButton);
 
-$('#hint-btn').on('click', hintButton)
+$('#hint-btn').on('click', hintButton);
 
 $('.game-gui').on('mousedown', '.col', function () {
   if (uI)
-    $(this).toggleClass('lighten-5')
+    $(this).toggleClass('lighten-5');
 });
 
 $('.game-gui').on('mouseup', '.col', function () {
   if (uI)
-    $(this).toggleClass('lighten-5')
-  if (userRecord) {
+    $(this).toggleClass('lighten-5');
+  if (userRecord && $(this).attr('id') !== undefined) {
     userPattern.push($(this).attr('id'));
     startUserPattern();
   }
+  console.log($(this).attr('id'));
 });
 
 $('body').on('keydown keyup', function (e) {
@@ -39,15 +40,15 @@ function startButton() {
   reset();
   startGame(i);
   $('#hint-btn').text('hints left: 2').removeClass('scale-out').addClass('scale-in');
-  $(this).addClass('scale-out').removeClass('scale-in');
+  $('#start-btn').addClass('scale-out').removeClass('scale-in');
 }
 
 function hintButton() {
   startGame(i);
   hints--;
-  $(this).text('hints left: ' + hints);
+  $('#hint-btn').text('hints left: ' + hints);
   if (hints <= 0) {
-    $(this).removeClass('scale-in').addClass('scale-out')
+    $('#hint-btn').removeClass('scale-in').addClass('scale-out');
   }
 }
 
