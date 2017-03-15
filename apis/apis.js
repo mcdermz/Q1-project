@@ -9,7 +9,13 @@ $.ajax({
   dataType: 'json',
 }).then(function (data) {
   window.storedPattern = data.result.random.data
-  window.boxPattern = patternIncrement(window.storedPattern)
+  window.boxPattern = patternIncrement(window.storedPattern);
+  if (data.result.requestsLeft < 50000){
+    console.error('Requests left: ' + data.result.requestsLeft);
+  }
+  if (data.result.bitsLeft < 100000) {
+    console.error('WARNING! Bits left: ' + data.result.bitsLeft);
+  }
 }).catch(function (err) {
   console.log(err);
 });
