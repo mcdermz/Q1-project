@@ -4,10 +4,10 @@ $(document).on('load', function () {
   reset();
 })
 
-$('#start-btn').on('click', function() {
-    i = 0;
-    reset();
-    startGame(i);
+$('#start-btn').on('click', function () {
+  i = 0;
+  reset();
+  startGame(i);
 });
 
 $('.game-gui').on('mousedown', '.col', function () {
@@ -18,15 +18,13 @@ $('.game-gui').on('mousedown', '.col', function () {
 $('.game-gui').on('mouseup', '.col', function () {
   if (uI)
     $(this).toggleClass('accent-1')
-    if (userRecord){
-      userPattern.push($(this).attr('id'));
-      startUserPattern();
-      console.log(userPattern);
-
-    }
+  if (userRecord) {
+    userPattern.push($(this).attr('id'));
+    startUserPattern();
+  }
 });
 
-$('body').on('keydown keyup', function (e){
+$('body').on('keydown keyup', function (e) {
   hotKeysUpDown(e);
 });
 
@@ -34,7 +32,6 @@ $('body').on('keyup', function (e) {
   if (userRecord) {
     hotKeysPress(e);
     startUserPattern();
-    console.log(e.which);
   }
 });
 
@@ -54,7 +51,6 @@ function hotKeysPress(e) {
   let keyID = keyAction[e.which];
   if (typeof keyID != 'undefined' && uI) {
     userPattern.push(keyID);
-    console.log(userPattern);
   }
 }
 
