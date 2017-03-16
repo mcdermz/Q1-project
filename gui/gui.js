@@ -9,23 +9,24 @@ $('#start-btn').on('click', startButton);
 
 $('#hint-btn').on('click', hintButton);
 
-$('.game-gui').on('mousedown', '.col', function () {
-  if (uI){
-    $(this).addClass('lighten-5').addClass('clicked');
+$(' .game-gui').on('mousedown', '.col', function () {
+  if (uI) {
+    $(this).addClass('lighten-5 clicked');
     playTone(toneObject[$(this).attr('id')]);
-    $(this).mouseleave(function () {
-      if ($(this).hasClass('clicked')) {
-        $(this).removeClass('lighten-5 clicked');
+    if ($(this).hasClass('clicked')) {
+      $(this).mouseleave(function () {
         stopTone(toneObject[$(this).attr('id')]);
-      }
-    });
+        $(this).removeClass('lighten-5 clicked');
+      });
+    }
   }
 });
 
 $('.game-gui').on('mouseup', '.col', function () {
-  if (uI && $(this).hasClass('clicked'))
-    $(this).removeClass('lighten-5 clicked');
+  if (uI && $(this).hasClass('clicked')) {
     stopTone(toneObject[$(this).attr('id')]);
+    $(this).removeClass('lighten-5 clicked');
+  }
   if (userRecord) {
     userPattern.push($(this).attr('id'));
     startUserPattern();
@@ -51,8 +52,13 @@ function startButton() {
   i = 0;
   reset();
   startGame(i);
-  $('#hint-btn').text('hints left: 2').removeClass('scale-out').addClass('scale-in');
-  $('#start-btn').addClass('scale-out').removeClass('scale-in');
+  $('#hint-btn')
+    .text('hints left: 2')
+    .removeClass('scale-out')
+    .addClass('scale-in');
+  $('#start-btn')
+    .addClass('scale-out')
+    .removeClass('scale-in');
 }
 
 function hintButton() {
@@ -60,7 +66,9 @@ function hintButton() {
   hints--;
   $('#hint-btn').text('hints left: ' + hints);
   if (hints <= 0) {
-    $('#hint-btn').removeClass('scale-in').addClass('scale-out');
+    $('#hint-btn')
+      .removeClass('scale-in')
+      .addClass('scale-out');
   }
 }
 
@@ -91,9 +99,9 @@ function hotKeysUpDown(e) {
   if (uI) {
     $(boxID).toggleClass('lighten-5');
     if (e.type === 'keydown' && boxNum !== undefined) {
-      playTone(toneObject[boxNum])
-    }else if (boxNum !== undefined){
-      stopTone(toneObject[boxNum])
+      playTone(toneObject[boxNum]);
+    } else if (boxNum !== undefined) {
+      stopTone(toneObject[boxNum]);
     }
   }
 }
