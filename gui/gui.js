@@ -48,6 +48,16 @@ function hintButton() {
   }
 }
 
+function startBoxAction($box) {
+  playTone(toneObject[$box.attr('id')]);
+  $box.addClass('lighten-5 clicked');
+}
+
+function endBoxAction($box) {
+  stopTone(toneObject[$box.attr('id')]);
+  $box.removeClass('lighten-5 clicked');
+}
+
 function mousedownGUI () {
   if (uI) {
     startBoxAction($(this));
@@ -57,16 +67,6 @@ function mousedownGUI () {
       });
     }
   }
-}
-
-function startBoxAction($box) {
-  playTone(toneObject[$box.attr('id')]);
-  $box.addClass('lighten-5 clicked');
-}
-
-function endBoxAction($box) {
-  stopTone(toneObject[$box.attr('id')]);
-  $box.removeClass('lighten-5 clicked');
 }
 
 function mouseupGUI () {
@@ -105,11 +105,10 @@ function hotKeysPress(e) {
   let boxNum = keyAction[e.which]
   let boxID = '#' + boxNum;
   if (uI) {
-    $(boxID).toggleClass('lighten-5');
     if (e.type === 'keydown' && boxNum !== undefined) {
-      playTone(toneObject[boxNum]);
+      startBoxAction($(boxID))
     } else if (boxNum !== undefined) {
-      stopTone(toneObject[boxNum]);
+      endBoxAction($(boxID))
     }
   }
 }
