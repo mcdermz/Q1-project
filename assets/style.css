@@ -14,3 +14,9 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+#top-score {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: .2rem;
+}
