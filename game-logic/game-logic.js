@@ -5,7 +5,7 @@ let i;
 let uI = true;
 let userRecord;
 let userPattern;
-let topScore = 1
+let topScore;
 
 function reset() {
   uI = true;
@@ -19,10 +19,7 @@ function nextLevel() {
   $('#start-btn').removeClass('scale-out').addClass('scale-in').text('LEVEL ' + level + ': GO!');
   $('#hint-btn').removeClass('scale-in').addClass('scale-out');
   $('.user-score').addClass('scale-in').removeClass('scale-out');
-  if (level > topScore){
-    topScore = level;
-    $('#top-score').text(`level ${topScore}`);
-  }
+  setTopScore();
   hints = 2;
   window.boxPattern = patternIncrement(window.storedPattern)
 }
@@ -80,4 +77,12 @@ function loseGame() {
     $('#start-btn').addClass('scale-in').removeClass('scale-out').text('START');
     $(this).addClass('scale-out').removeClass('scale-in');
   });
+}
+
+function setTopScore() {
+  topScore = localStorage.getItem('topScore') || 1;
+  $('#top-score').text(`level ${topScore}`);
+  if (level > topScore) {
+    localStorage.setItem('topScore', level);
+  }
 }
