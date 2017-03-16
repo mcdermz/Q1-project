@@ -8,7 +8,7 @@ $('#start-btn').on('click', startButton);
 
 $('#hint-btn').on('click', hintButton);
 
-$(' .game-gui').on('mousedown', '.col', mousedownGUI);
+$('.game-gui').on('mousedown', '.col', mousedownGUI);
 
 $('.game-gui').on('mouseup', '.col', mouseupGUI);
 
@@ -38,7 +38,7 @@ function startButton() {
 
 function hintButton() {
   startGame(0);
-  userPattern = [];
+  userPattern = []
   hints--;
   $('#hint-btn').text('hints left: ' + hints);
   if (hints <= 0) {
@@ -54,21 +54,22 @@ function mousedownGUI () {
     $(this).addClass('lighten-5 clicked');
     playTone(toneObject[boxNum]);
     if ($(this).hasClass('clicked')) {
-      $(this).mouseleave(mouseleaveGUI);
+      $(this).mouseleave(function () {
+        endBoxAction($(this))
+      });
     }
   }
 }
 
-function mouseleaveGUI() {
-  stopTone(toneObject[$(this).attr('id')]);
-  $(this).removeClass('lighten-5 clicked');
+function endBoxAction($box) {
+  stopTone(toneObject[$box.attr('id')]);
+  $box.removeClass('lighten-5 clicked');
 }
 
 function mouseupGUI () {
   let $boxNum = $(this).attr('id');
   if (uI && $(this).hasClass('clicked')) {
-    stopTone(toneObject[$boxNum]);
-    $(this).removeClass('lighten-5 clicked');
+    endBoxAction($(this))
   }
   if (userRecord && $boxNum !== undefined) {
     userPattern.push($boxNum);
