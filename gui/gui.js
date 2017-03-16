@@ -12,10 +12,6 @@ $(' .game-gui').on('mousedown', '.col', mousedownGUI);
 
 $('.game-gui').on('mouseup', '.col', mouseupGUI);
 
-$('.game-gui').on('mouseleave', '.col', function () {
-  stopTone(toneObject[$(this).attr('id')])
-});
-
 $('body').on('keydown keyup', function (e) {
   hotKeysUpDown(e);
 });
