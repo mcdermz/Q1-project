@@ -46,14 +46,12 @@ function startGame(i) {
     .animate({
       opacity: '1'
     }, 450, 'linear', function () {
-      $(this).toggleClass('lighten-5');
-      playTone(toneObject[boxNum])
+      startBoxAction($(boxActive))
     })
     .animate({
       opacity: '1'
     }, 450, 'linear', function () {
-      $(this).toggleClass('lighten-5')
-      stopTone(toneObject[boxNum])
+      endBoxAction($(boxActive))
     })
   ).done(function () {
     i++;
