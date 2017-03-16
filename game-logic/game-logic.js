@@ -11,7 +11,6 @@ function reset() {
   uI = true;
   userRecord = false;
   userPattern = [];
-  $('.game-gui div.col').removeClass('lighten-5');
 }
 
 function nextLevel() {
