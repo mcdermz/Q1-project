@@ -50,15 +50,18 @@ function hintButton() {
 
 function mousedownGUI () {
   if (uI) {
-    let boxNum = $(this).attr('id')
-    $(this).addClass('lighten-5 clicked');
-    playTone(toneObject[boxNum]);
+    startBoxAction($(this));
     if ($(this).hasClass('clicked')) {
       $(this).mouseleave(function () {
         endBoxAction($(this))
       });
     }
   }
+}
+
+function startBoxAction($box) {
+  playTone(toneObject[$box.attr('id')]);
+  $box.addClass('lighten-5 clicked');
 }
 
 function endBoxAction($box) {
