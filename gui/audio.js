@@ -1,9 +1,9 @@
-// $('.game-gui').on('mousedown', function () {
-//   playTone(toneObject['3'])
+// $('.game-gui').on('mousedown', '.col', function () {
+//   playTone(toneObject[$(this).attr('id')])
 // })
 //
-// $('.game-gui').on('mouseup', function () {
-//     stopTone(toneObject['3'])
+// $('.game-gui').on('mouseup', '.col', function () {
+//     stopTone(toneObject[$(this).attr('id')])
 // })
 
 let toneObject = {

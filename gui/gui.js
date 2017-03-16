@@ -10,18 +10,30 @@ $('#start-btn').on('click', startButton);
 $('#hint-btn').on('click', hintButton);
 
 $('.game-gui').on('mousedown', '.col', function () {
-  if (uI)
-    $(this).toggleClass('lighten-5');
+  if (uI){
+    $(this).addClass('lighten-5').addClass('clicked');
+    playTone(toneObject[$(this).attr('id')]);
+    $(this).mouseleave(function () {
+      if ($(this).hasClass('clicked')) {
+        $(this).removeClass('lighten-5 clicked');
+        stopTone(toneObject[$(this).attr('id')]);
+      }
+    });
+  }
 });
 
 $('.game-gui').on('mouseup', '.col', function () {
-  if (uI)
-    $(this).toggleClass('lighten-5');
-  if (userRecord && $(this).attr('id') !== undefined) {
+  if (uI && $(this).hasClass('clicked'))
+    $(this).removeClass('lighten-5 clicked');
+    stopTone(toneObject[$(this).attr('id')]);
+  if (userRecord) {
     userPattern.push($(this).attr('id'));
     startUserPattern();
   }
-  console.log($(this).attr('id'));
+});
+
+$('.game-gui').on('mouseleave', '.col', function () {
+  stopTone(toneObject[$(this).attr('id')])
 });
 
 $('body').on('keydown keyup', function (e) {
