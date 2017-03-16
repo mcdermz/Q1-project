@@ -37,7 +37,8 @@ function startButton() {
 }
 
 function hintButton() {
-  startGame(i);
+  startGame(0);
+  userPattern = [];
   hints--;
   $('#hint-btn').text('hints left: ' + hints);
   if (hints <= 0) {

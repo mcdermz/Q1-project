@@ -25,7 +25,7 @@ function nextLevel() {
 
 function startUserPattern() {
   if (userPattern.length !== window.boxPattern.length) {
-    for (i in userPattern) {
+    for (let i in userPattern) {
       if (userPattern[i] != window.boxPattern[i]) {
         loseGame();
       }
