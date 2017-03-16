@@ -1,6 +1,5 @@
 console.log('gui sanity check!');
 
-
 $(document).on('load', function () {
   reset();
 });
@@ -9,29 +8,9 @@ $('#start-btn').on('click', startButton);
 
 $('#hint-btn').on('click', hintButton);
 
-$(' .game-gui').on('mousedown', '.col', function () {
-  if (uI) {
-    $(this).addClass('lighten-5 clicked');
-    playTone(toneObject[$(this).attr('id')]);
-    if ($(this).hasClass('clicked')) {
-      $(this).mouseleave(function () {
-        stopTone(toneObject[$(this).attr('id')]);
-        $(this).removeClass('lighten-5 clicked');
-      });
-    }
-  }
-});
+$(' .game-gui').on('mousedown', '.col', mousedownGUI);
 
-$('.game-gui').on('mouseup', '.col', function () {
-  if (uI && $(this).hasClass('clicked')) {
-    stopTone(toneObject[$(this).attr('id')]);
-    $(this).removeClass('lighten-5 clicked');
-  }
-  if (userRecord) {
-    userPattern.push($(this).attr('id'));
-    startUserPattern();
-  }
-});
+$('.game-gui').on('mouseup', '.col', mouseupGUI);
 
 $('.game-gui').on('mouseleave', '.col', function () {
   stopTone(toneObject[$(this).attr('id')])
@@ -69,6 +48,32 @@ function hintButton() {
     $('#hint-btn')
       .removeClass('scale-in')
       .addClass('scale-out');
+  }
+}
+
+function mousedownGUI () {
+  if (uI) {
+    $(this).addClass('lighten-5 clicked');
+    playTone(toneObject[$(this).attr('id')]);
+    if ($(this).hasClass('clicked')) {
+      $(this).mouseleave(mouseleaveGUI);
+    }
+  }
+}
+
+function mouseleaveGUI() {
+  stopTone(toneObject[$(this).attr('id')]);
+  $(this).removeClass('lighten-5 clicked');
+}
+
+function mouseupGUI () {
+  if (uI && $(this).hasClass('clicked')) {
+    stopTone(toneObject[$(this).attr('id')]);
+    $(this).removeClass('lighten-5 clicked');
+  }
+  if (userRecord) {
+    userPattern.push($(this).attr('id'));
+    startUserPattern();
   }
 }
 

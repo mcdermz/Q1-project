@@ -16,7 +16,9 @@ let toneObject = {
 }
 
 function playTone (toneID) {
-  $(toneID)[0].play();
+  if (toneID){
+    $(toneID)[0].play();
+  }
 }
 
 function stopTone (toneID) {
