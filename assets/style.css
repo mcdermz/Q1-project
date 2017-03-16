@@ -15,8 +15,12 @@
     user-select: none;
 }
 
-#top-score {
+.user-score {
   text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: .2rem;
+  font-weight: 100;
+}
+
+#top-score {
+  font-weight: 500;
+  letter-spacing: .1rem;
 }

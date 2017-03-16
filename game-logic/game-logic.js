@@ -5,6 +5,7 @@ let i;
 let uI = true;
 let userRecord;
 let userPattern;
+let topScore = 1
 
 function reset() {
   uI = true;
@@ -17,6 +18,11 @@ function nextLevel() {
   console.log('You win! Get ready for level ' + level + '!')
   $('#start-btn').removeClass('scale-out').addClass('scale-in').text('LEVEL ' + level + ': GO!');
   $('#hint-btn').removeClass('scale-in').addClass('scale-out');
+  $('.user-score').addClass('scale-in').removeClass('scale-out');
+  if (level > topScore){
+    topScore = level;
+    $('#top-score').text(`level ${topScore}`);
+  }
   hints = 2;
   window.boxPattern = patternIncrement(window.storedPattern)
 }

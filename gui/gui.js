@@ -13,12 +13,12 @@ $(' .game-gui').on('mousedown', '.col', mousedownGUI);
 $('.game-gui').on('mouseup', '.col', mouseupGUI);
 
 $('body').on('keydown keyup', function (e) {
-  hotKeysUpDown(e);
+  hotKeysPress(e);
 });
 
 $('body').on('keyup', function (e) {
   if (userRecord) {
-    hotKeysPress(e);
+    hotKeysUp(e);
     startUserPattern();
   }
 });
@@ -49,8 +49,9 @@ function hintButton() {
 
 function mousedownGUI () {
   if (uI) {
+    let boxNum = $(this).attr('id')
     $(this).addClass('lighten-5 clicked');
-    playTone(toneObject[$(this).attr('id')]);
+    playTone(toneObject[boxNum]);
     if ($(this).hasClass('clicked')) {
       $(this).mouseleave(mouseleaveGUI);
     }
@@ -63,17 +64,18 @@ function mouseleaveGUI() {
 }
 
 function mouseupGUI () {
+  let $boxNum = $(this).attr('id');
   if (uI && $(this).hasClass('clicked')) {
-    stopTone(toneObject[$(this).attr('id')]);
+    stopTone(toneObject[$boxNum]);
     $(this).removeClass('lighten-5 clicked');
   }
-  if (userRecord) {
-    userPattern.push($(this).attr('id'));
+  if (userRecord && $boxNum !== undefined) {
+    userPattern.push($boxNum);
     startUserPattern();
   }
 }
 
-function hotKeysPress(e) {
+function hotKeysUp(e) {
   let keyAction = {
     65: '1',
     83: '2',
@@ -87,7 +89,7 @@ function hotKeysPress(e) {
   }
 }
 
-function hotKeysUpDown(e) {
+function hotKeysPress(e) {
   let keyAction = {
     65: '1',
     83: '2',
