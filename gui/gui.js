@@ -30,9 +30,8 @@ $('body').on('keyup', function (e) {
 });
 
 function startButton() {
-  i = 0;
   reset();
-  startPlayback(i);
+  startPlayback(0);
   $('#hint-btn')
     .text('hints left: 2')
     .removeClass('scale-out')

@@ -17,7 +17,6 @@ function getStoredPattern (bool) {
 }
 
 function patternIncrement(p) {
-  console.log(initial);
   begin = level + initial;
   end = begin + level + 1;
   initial = begin;
@@ -55,7 +54,7 @@ function callRandomAPI () {
   $.ajax({
     method: 'POST',
     url: 'https://api.random.org/json-rpc/1/invoke',
-    data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"e6de09f3-8331-40c8-bdf3-c22b519a1483","n":55,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
+    data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"e6de09f3-8331-40c8-bdf3-c22b519a1483","n":56,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
     dataType: 'json',
   }).then( function (data){
     getRandomPattern(data);
