@@ -23,6 +23,7 @@ function patternIncrement(p) {
   end = begin + level + 1;
   initial = begin;
   level++;
+  console.log(p.slice(begin, end));
   return p.slice(begin, end);
 }
 

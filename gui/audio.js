@@ -1,11 +1,3 @@
-// $('.game-gui').on('mousedown', '.col', function () {
-//   playTone(toneObject[$(this).attr('id')])
-// })
-//
-// $('.game-gui').on('mouseup', '.col', function () {
-//     stopTone(toneObject[$(this).attr('id')])
-// })
-
 let toneObject = {
   // boxID : toneID
   1 : '#c1',

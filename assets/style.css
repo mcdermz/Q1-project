@@ -1,5 +1,7 @@
-.game-gui div.col.s4 {
+.game-gui div.col.s2 {
   height: auto;
+  border-radius: 10px;
+  margin-left: .5rem;
 }
 
 .game-gui {
@@ -19,7 +21,9 @@
   text-transform: uppercase;
   font-weight: 100;
 }
-
+div.col a.btn {
+  border-radius: 10px;
+}
 #top-score {
   font-weight: 500;
   letter-spacing: .1rem;

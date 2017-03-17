@@ -5,6 +5,9 @@ $(document).on('load', function () {
 });
 
 $('#start-btn').on('click', startButton);
+$(document).on('keypress', function (e){
+  if (e.which === 13 && $('#start-btn').hasClass('scale-in')) startButton();
+})
 
 $('#hint-btn').on('click', hintButton);
 
