@@ -38,7 +38,7 @@ function startUserPattern() {
   }
 }
 
-function startGame(i) {
+function startPlayback(i) {
   uI = false;
   let boxNum = window.boxPattern[i]
   let boxActive = `#${boxNum}`;
@@ -56,7 +56,7 @@ function startGame(i) {
   ).done(function () {
     i++;
     if (i < window.boxPattern.length) {
-      startGame(i);
+      startPlayback(i);
     } else {
       console.log('pattern is done, your turn!')
       uI = true;

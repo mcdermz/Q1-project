@@ -32,7 +32,7 @@ $('body').on('keyup', function (e) {
 function startButton() {
   i = 0;
   reset();
-  startGame(i);
+  startPlayback(i);
   $('#hint-btn')
     .text('hints left: 2')
     .removeClass('scale-out')
@@ -43,7 +43,7 @@ function startButton() {
 }
 
 function hintButton() {
-  startGame(0);
+  startPlayback(0);
   userPattern = []
   hints--;
   $('#hint-btn').text('hints left: ' + hints);
