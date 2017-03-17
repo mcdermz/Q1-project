@@ -13,12 +13,19 @@ function reset() {
   userPattern = [];
 }
 
+function winGame() {
+  if (level === 11){
+    alert('YOU WIN');
+  }
+}
+
 function nextLevel() {
   console.log('You win! Get ready for level ' + level + '!')
   $('#start-btn').removeClass('scale-out').addClass('scale-in').text('LEVEL ' + level + ': GO!');
   $('#hint-btn').removeClass('scale-in').addClass('scale-out');
   $('.user-score').addClass('scale-in').removeClass('scale-out');
   setTopScore();
+  winGame();
   hints = 2;
   window.boxPattern = patternIncrement(window.storedPattern)
 }

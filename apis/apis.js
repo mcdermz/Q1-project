@@ -8,7 +8,7 @@ let end = 2;
 let level = 1;
 let initial = -1;
 
-getStoredPattern(true);
+getStoredPattern(false);
 
 function getStoredPattern (bool) {
   level = 1;
@@ -35,7 +35,7 @@ function pseudoRandomArr (num) {
 }
 
 function getBackup () {
-  window.storedPattern = pseudoRandomArr(55)
+  window.storedPattern = pseudoRandomArr(63)
   window.boxPattern = patternIncrement(window.storedPattern);
 }
 
@@ -54,7 +54,7 @@ function callRandomAPI () {
   $.ajax({
     method: 'POST',
     url: 'https://api.random.org/json-rpc/1/invoke',
-    data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"e6de09f3-8331-40c8-bdf3-c22b519a1483","n":56,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
+    data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"e6de09f3-8331-40c8-bdf3-c22b519a1483","n":63,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
     dataType: 'json',
   }).then( function (data){
     getRandomPattern(data);
