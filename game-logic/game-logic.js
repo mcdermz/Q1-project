@@ -38,25 +38,26 @@ function startUserPattern() {
   }
 }
 
-function startPlayback(i) {
+function startPlayback(i, speed) {
+  let s = speed || 450;
   uI = false;
   let boxNum = window.boxPattern[i]
   let boxActive = `#${boxNum}`;
   $.when($(boxActive)
     .animate({
       opacity: '1'
-    }, 450, 'linear', function () {
+    }, s, 'linear', function () {
       startBoxAction($(boxActive))
     })
     .animate({
       opacity: '1'
-    }, 450, 'linear', function () {
+    }, s, 'linear', function () {
       endBoxAction($(boxActive))
     })
   ).done(function () {
     i++;
     if (i < window.boxPattern.length) {
-      startPlayback(i);
+      startPlayback(i, s);
     } else {
       console.log('pattern is done, your turn!')
       uI = true;
