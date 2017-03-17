@@ -43,11 +43,11 @@ function getBackup () {
 function getRandomPattern (data) {
   window.storedPattern = data.result.random.data;
   window.boxPattern = patternIncrement(window.storedPattern);
-  if (data.result.requestsLeft < 50000){
-    console.error('Requests left: ' + data.result.requestsLeft);
+  if (data.result.requestsLeft < 100){
+    alert('Requests left: ' + data.result.requestsLeft);
   }
   if (data.result.bitsLeft < 100000) {
-    console.error('WARNING! Bits left: ' + data.result.bitsLeft);
+    alert('WARNING! Bits left: ' + data.result.bitsLeft);
   }
 }
 
@@ -55,10 +55,11 @@ function callRandomAPI () {
   $.ajax({
     method: 'POST',
     url: 'https://api.random.org/json-rpc/1/invoke',
-    data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"00000000-0000-0000-0000-000000000000","n":55,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
+    data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"e6de09f3-8331-40c8-bdf3-c22b519a1483","n":55,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
     dataType: 'json',
   }).then( function (data){
     getRandomPattern(data);
+    console.log('Requests left: ' + data.result.requestsLeft + ', Bits left: ' + data.result.bitsLeft);
   }).catch(function (err) {
     console.log(err);
   });
