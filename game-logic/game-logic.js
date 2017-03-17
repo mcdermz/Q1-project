@@ -68,12 +68,15 @@ function startGame(i) {
 function loseGame() {
   console.log('You lose!');
   $('#hint-btn').addClass('scale-out').removeClass('scale-in');
-  $('#loser-btn').addClass('scale-in').removeClass('scale-out').on('click', function () {
-    reset();
-    level = 1;
-    $('#start-btn').addClass('scale-in').removeClass('scale-out').text('START');
-    $(this).addClass('scale-out').removeClass('scale-in');
-  });
+  $('#loser-btn').addClass('scale-in').removeClass('scale-out').on('click', youLoseBtn);
+}
+
+function youLoseBtn() {
+  reset();
+  callRandomAPI();
+  level = 1;
+  $('#start-btn').addClass('scale-in').removeClass('scale-out').text('START');
+  $(this).addClass('scale-out').removeClass('scale-in');
 }
 
 function setTopScore() {

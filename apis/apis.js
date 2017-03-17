@@ -2,16 +2,20 @@ console.log('apis sanity!!!');
 
 window.storedPattern;
 
-$.ajax({
-  method: 'POST',
-  url: 'https://api.random.org/json-rpc/1/invoke',
-  data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"00000000-0000-0000-0000-000000000000","n":55,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
-  dataType: 'json',
-}).then( function (data){
-  getRandomPattern(data);
-}).catch(function (err) {
-  console.log(err);
-});
+callRandomAPI();
+
+function callRandomAPI () {
+  $.ajax({
+    method: 'POST',
+    url: 'https://api.random.org/json-rpc/1/invoke',
+    data: '{"jsonrpc":"2.0","method":"generateIntegers","params":{"apiKey":"00000000-0000-0000-0000-000000000000","n":55,"min":1,"max":5,"replacement":true,"base":10},"id":8072}',
+    dataType: 'json',
+  }).then( function (data){
+    getRandomPattern(data);
+  }).catch(function (err) {
+    console.log(err);
+  });
+};
 
 let begin;
 let end = 2;
