@@ -73,7 +73,7 @@ function loseGame() {
 
 function youLoseBtn() {
   reset();
-  callRandomAPI();
+  getStoredPattern();
   level = 1;
   $('#start-btn').addClass('scale-in').removeClass('scale-out').text('START');
   $(this).addClass('scale-out').removeClass('scale-in');

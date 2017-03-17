@@ -2,7 +2,52 @@ console.log('apis sanity!!!');
 
 window.storedPattern;
 
-callRandomAPI();
+
+let begin;
+let end = 2;
+let level = 1;
+let initial = -1;
+
+getStoredPattern();
+
+function getStoredPattern () {
+  // callRandomAPI();
+  getBackup();
+}
+
+function patternIncrement(p) {
+  begin = level + initial;
+  end = begin + level + 1;
+  initial = begin;
+  level++;
+  console.log(p.slice(begin, end));
+  return p.slice(begin, end);
+}
+
+function pseudoRandomArr (num) {
+  let newArr = [];
+  for (var j = 0; j < num; j++) {
+    let pseudoRand = Math.floor(1 + Math.random() * 5);
+    newArr.push(pseudoRand.toString())
+  }
+  return newArr;
+}
+
+function getBackup () {
+  window.storedPattern = pseudoRandomArr(55)
+  window.boxPattern = patternIncrement(window.storedPattern);
+}
+
+function getRandomPattern (data) {
+  window.storedPattern = data.result.random.data;
+  window.boxPattern = patternIncrement(window.storedPattern);
+  if (data.result.requestsLeft < 50000){
+    console.error('Requests left: ' + data.result.requestsLeft);
+  }
+  if (data.result.bitsLeft < 100000) {
+    console.error('WARNING! Bits left: ' + data.result.bitsLeft);
+  }
+}
 
 function callRandomAPI () {
   $.ajax({
@@ -16,37 +61,3 @@ function callRandomAPI () {
     console.log(err);
   });
 };
-
-let begin;
-let end = 2;
-let level = 1;
-let initial = -1;
-
-function patternIncrement(p) {
-  begin = level + initial;
-  end = begin + level + 1;
-  initial = begin;
-  level++;
-  console.log(p.slice(begin, end));
-  return p.slice(begin, end);
-}
-
-function getBackup () {
-  let newArr = [];
-  for (var i = 0; i < 50; i++) {
-    let pseudoRand = Math.floor(1 + Math.random() * 5);
-    newArr.push(pseudoRand.toString())
-  }
-  return newArr;
-}
-
-function getRandomPattern (data) {
-  window.storedPattern = data.result.random.data;
-  window.boxPattern = patternIncrement(window.storedPattern);
-  if (data.result.requestsLeft < 50000){
-    console.error('Requests left: ' + data.result.requestsLeft);
-  }
-  if (data.result.bitsLeft < 100000) {
-    console.error('WARNING! Bits left: ' + data.result.bitsLeft);
-  }
-}
