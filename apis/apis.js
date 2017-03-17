@@ -8,14 +8,16 @@ let end = 2;
 let level = 1;
 let initial = -1;
 
-getStoredPattern();
+getStoredPattern(true);
 
-function getStoredPattern () {
-  // callRandomAPI();
-  getBackup();
+function getStoredPattern (bool) {
+  level = 1;
+  initial = -1;
+  return (bool) ? callRandomAPI() : getBackup();
 }
 
 function patternIncrement(p) {
+  console.log(initial);
   begin = level + initial;
   end = begin + level + 1;
   initial = begin;
@@ -26,7 +28,7 @@ function patternIncrement(p) {
 
 function pseudoRandomArr (num) {
   let newArr = [];
-  for (var j = 0; j < num; j++) {
+  for (let j = 0; j < num; j++) {
     let pseudoRand = Math.floor(1 + Math.random() * 5);
     newArr.push(pseudoRand.toString())
   }
