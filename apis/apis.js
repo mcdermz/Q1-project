@@ -31,6 +31,15 @@ function patternIncrement(p) {
   return p.slice(begin, end);
 }
 
+function getBackup () {
+  let newArr = [];
+  for (var i = 0; i < 50; i++) {
+    let pseudoRand = Math.floor(1 + Math.random() * 5);
+    newArr.push(pseudoRand.toString())
+  }
+  return newArr;
+}
+
 function getRandomPattern (data) {
   window.storedPattern = data.result.random.data;
   window.boxPattern = patternIncrement(window.storedPattern);
