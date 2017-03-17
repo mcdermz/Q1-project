@@ -16,7 +16,7 @@ function playTone (toneID) {
 function stopTone (toneID) {
   if (toneID){
     $(toneID)[0].animate({volume: 0}, 100);
-    setTimeout(function () {$(toneID)[0].pause()},200);
-    setTimeout(function () {$(toneID)[0].currentTime = 0},201)
+    setTimeout(function () {$(toneID)[0].pause()},100);
+    setTimeout(function () {$(toneID)[0].currentTime = 0},101)
   }
 }
