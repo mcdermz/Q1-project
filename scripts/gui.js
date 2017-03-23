@@ -83,11 +83,11 @@ function mouseupGUI () {
 
 function hotKeysUp(e) {
   let keyAction = {
-    65: '1',
-    83: '2',
-    68: '3',
-    70: '4',
-    71: '5',
+    81: '1',
+    87: '2',
+    69: '3',
+    82: '4',
+    84: '5',
   };
   let keyID = keyAction[e.which];
   if (typeof keyID != 'undefined' && gameVars.uI) {
@@ -97,11 +97,11 @@ function hotKeysUp(e) {
 
 function hotKeysPress(e) {
   let keyAction = {
-    65: '1',
-    83: '2',
-    68: '3',
-    70: '4',
-    71: '5',
+    81: '1',
+    87: '2',
+    69: '3',
+    82: '4',
+    84: '5',
   };
   let boxNum = keyAction[e.which]
   let boxID = '#' + boxNum;
