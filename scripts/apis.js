@@ -5,18 +5,19 @@ window.storedPattern;
 getStoredPattern(false);
 
 function getStoredPattern (bool) {
-  level = 1;
-  initial = -1;
+  gameVars.level = 1;
+  gameVars.initial = -1;
   return (bool) ? callRandomAPI() : getBackup();
 }
 
-function patternIncrement(p) {
-  let begin = level + initial;
-  end = begin + level + 1;
-  initial = begin;
-  level++;
-  console.log(p.slice(begin, end));
-  return p.slice(begin, end);
+function patternIncrement(pattern, level) {
+  let begin = level + gameVars.initial;
+  let end = begin + level + 1;
+  gameVars.initial += level;
+  gameVars.level++;
+  console.log(level);
+  console.log(pattern.slice(begin, end));
+  return pattern.slice(begin, end);
 }
 
 function pseudoRandomArr (num) {
@@ -30,12 +31,12 @@ function pseudoRandomArr (num) {
 
 function getBackup () {
   window.storedPattern = pseudoRandomArr(63)
-  window.boxPattern = patternIncrement(window.storedPattern);
+  window.boxPattern = patternIncrement(window.storedPattern, gameVars.level);
 }
 
 function getRandomPattern (data) {
   window.storedPattern = data.result.random.data;
-  window.boxPattern = patternIncrement(window.storedPattern);
+  window.boxPattern = patternIncrement(window.storedPattern, gameVars.level);
   if (data.result.requestsLeft < 100){
     alert('Requests left: ' + data.result.requestsLeft);
   }

@@ -21,7 +21,7 @@ $('body').on('keydown keyup', function (e) {
 });
 
 $('body').on('keyup', function (e) {
-  if (userRecord) {
+  if (gameVars.userRecord) {
     hotKeysUp(e);
     startUserPattern();
   }
@@ -41,10 +41,10 @@ function startButton() {
 
 function hintButton() {
   startPlayback(0);
-  userPattern = []
-  hints--;
-  $('#hint-btn').text('hints left: ' + hints);
-  if (hints <= 0) {
+  gameVars.userPattern = [];
+  gameVars.hints--;
+  $('#hint-btn').text('hints left: ' + gameVars.hints);
+  if (gameVars.hints <= 0) {
     $('#hint-btn')
       .removeClass('scale-in')
       .addClass('scale-out');
@@ -62,7 +62,7 @@ function endBoxAction($box) {
 }
 
 function mousedownGUI () {
-  if (uI) {
+  if (gameVars.uI) {
     startBoxAction($(this));
     if ($(this).hasClass('clicked')) {
       $(this).mouseleave(function () {
@@ -74,11 +74,11 @@ function mousedownGUI () {
 
 function mouseupGUI () {
   let $boxNum = $(this).attr('id');
-  if (uI && $(this).hasClass('clicked')) {
+  if (gameVars.uI && $(this).hasClass('clicked')) {
     endBoxAction($(this))
   }
-  if (userRecord && $boxNum !== undefined) {
-    userPattern.push($boxNum);
+  if (gameVars.userRecord && $boxNum !== undefined) {
+    gameVars.userPattern.push($boxNum);
     startUserPattern();
   }
 }
@@ -92,8 +92,8 @@ function hotKeysUp(e) {
     71: '5',
   };
   let keyID = keyAction[e.which];
-  if (typeof keyID != 'undefined' && uI) {
-    userPattern.push(keyID);
+  if (typeof keyID != 'undefined' && gameVars.uI) {
+    gameVars.userPattern.push(keyID);
   }
 }
 
@@ -107,7 +107,7 @@ function hotKeysPress(e) {
   };
   let boxNum = keyAction[e.which]
   let boxID = '#' + boxNum;
-  if (uI) {
+  if (gameVars.uI) {
     if (e.type === 'keydown' && boxNum !== undefined) {
       startBoxAction($(boxID))
     } else if (boxNum !== undefined) {

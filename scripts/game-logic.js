@@ -1,40 +1,40 @@
 console.log('game-logic sanity check!');
 
-let hints = 2;
-let i;
-let uI = true;
-let userRecord;
-let userPattern;
-let topScore;
-let end = 2;
-let level = 1;
-let initial = -1;
-
+let gameVars = {
+  hints: 2,
+  uI: true,
+  userRecord: false,
+  userPattern: [],
+  level: 1,
+  initial: -1,
+}
 
 function reset() {
-  uI = true;
-  userRecord = false;
-  userPattern = [];
+  gameVars.uI = true;
+  gameVars.userRecord = false;
+  gameVars.userPattern = [];
 }
 
 function winGame() {
-  if (level === 11){
+  if (gameVars.level === 11){
     alert('YOU WIN');
   }
 }
 
 function nextLevel() {
+  let level = gameVars.level;
   console.log('You win! Get ready for level ' + level + '!')
   $('#start-btn').removeClass('scale-out').addClass('scale-in').text('LEVEL ' + level + ': GO!');
   $('#hint-btn').removeClass('scale-in').addClass('scale-out');
   $('.user-score').addClass('scale-in').removeClass('scale-out');
   setTopScore();
   winGame();
-  hints = 2;
-  window.boxPattern = patternIncrement(window.storedPattern)
+  gameVars.hints = 2;
+  window.boxPattern = patternIncrement(window.storedPattern, gameVars.level)
 }
 
 function startUserPattern() {
+  let userPattern = gameVars.userPattern;
   if (userPattern.length !== window.boxPattern.length) {
     for (let i in userPattern) {
       if (userPattern[i] != window.boxPattern[i]) {
@@ -49,10 +49,10 @@ function startUserPattern() {
   }
 }
 
-function startPlayback(i, speed) {
+function startPlayback(marker, speed) {
   let s = speed || 450;
-  uI = false;
-  let boxNum = window.boxPattern[i]
+  gameVars.uI = false;
+  let boxNum = window.boxPattern[marker]
   let boxActive = `#${boxNum}`;
   $.when($(boxActive)
     .animate({
@@ -66,13 +66,13 @@ function startPlayback(i, speed) {
       endBoxAction($(boxActive))
     })
   ).done(function () {
-    i++;
-    if (i < window.boxPattern.length) {
-      startPlayback(i, s);
+    marker++;
+    if (marker < window.boxPattern.length) {
+      startPlayback(marker, s);
     } else {
       console.log('pattern is done, your turn!')
-      uI = true;
-      userRecord = true;
+      gameVars.uI = true;
+      gameVars.userRecord = true;
     }
   });
 }
@@ -85,13 +85,14 @@ function loseGame() {
 }
 
 function youLoseBtn() {
-  // reset();
   getStoredPattern(false);
   $('#start-btn').addClass('scale-in').removeClass('scale-out').text('START');
   $(this).addClass('scale-out').removeClass('scale-in');
 }
 
 function setTopScore() {
+  let topScore = gameVars.topScore;
+  let level = gameVars.level;
   topScore = localStorage.getItem('topScore') || 1;
   $('#top-score').text(`level ${topScore}`);
   if (level > topScore) {
