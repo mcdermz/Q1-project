@@ -5,7 +5,7 @@ $(document).on('load', function () {
 $('#start-btn').on('click', startButton);
 
 $(document).on('keypress', function (e){
-  if (e.which === 13 && $('#start-btn').hasClass('scale-in')) startButton();
+  if (e.which === 13 && $('#start-btn').hasClass('scale-in')) startButton(); 
 })
 
 $('#hint-btn').on('click', hintButton);
@@ -23,7 +23,16 @@ $('body').on('keyup', function (e) {
     hotKeysUp(e);
     startUserPattern();
   }
+  recordToPattern(keyAction[e.which]);
 });
+
+let keyAction = {
+  81: '1',
+  87: '2',
+  69: '3',
+  82: '4',
+  84: '5',
+};
 
 function startButton() {
   reset();
@@ -82,13 +91,6 @@ function mouseupGUI () {
 }
 
 function hotKeysUp(e) {
-  let keyAction = {
-    81: '1',
-    87: '2',
-    69: '3',
-    82: '4',
-    84: '5',
-  };
   let keyID = keyAction[e.which];
   if (typeof keyID != 'undefined' && gameVars.uI) {
     gameVars.userPattern.push(keyID);
@@ -96,13 +98,6 @@ function hotKeysUp(e) {
 }
 
 function hotKeysPress(e) {
-  let keyAction = {
-    81: '1',
-    87: '2',
-    69: '3',
-    82: '4',
-    84: '5',
-  };
   let boxNum = keyAction[e.which]
   let boxID = '#' + boxNum;
   if (gameVars.uI) {

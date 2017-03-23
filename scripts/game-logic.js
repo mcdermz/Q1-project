@@ -1,7 +1,6 @@
 let gameVars = {
   hints: 2,
   uI: true,
-  userRecord: false,
   userGuess: false,
   userPattern: [],
   level: 1,
@@ -10,7 +9,7 @@ let gameVars = {
 
 function reset() {
   gameVars.uI = true;
-  gameVars.userRecord = false;
+  recordVars.userRecord = false;
   gameVars.userGuess = false;
   gameVars.userPattern = [];
 }

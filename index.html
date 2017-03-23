@@ -11,6 +11,7 @@
     <script defer src="scripts/game-logic.js"></script>
     <script defer  src="scripts/apis.js"></script>
     <script defer src="scripts/audio.js"></script>
+    <script defer src="scripts/record-user-pattern.js"></script>
     <script defer src="scripts/gui.js"></script>
   </head>
   <body class="blue-grey darken-3">
@@ -20,6 +21,12 @@
     <audio id="b1" src="assets/audio/b-tone.mp3"></audio>
     <audio id="c8" src="assets/audio/c8-tone.mp3"></audio>
     <div class="container">
+      <form action="#">
+        <p>
+          <input type="checkbox" class="filled-in" id="user-record"/>
+          <label for="user-record">Record Arm</label>
+        </p>
+      </form>
       <div class="game-gui unselectable">
         <div class="row">
           <div id="1" class="col s2 offset-s1 red">
