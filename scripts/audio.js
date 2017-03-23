@@ -8,9 +8,8 @@ let toneObject = {
 }
 
 function playTone (toneID) {
-  if (toneID){
+  if (toneID)
     $(toneID)[0].play();
-  }
 }
 
 function stopTone (toneID) {

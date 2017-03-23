@@ -98,7 +98,6 @@ function setTopScore() {
   let level = gameVars.level;
   topScore = localStorage.getItem('topScore') || 1;
   $('#top-score').text(`level ${topScore}`);
-  if (level > topScore) {
+  if (level > topScore)
     localStorage.setItem('topScore', level);
-  }
 }
