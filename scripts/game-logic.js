@@ -36,17 +36,18 @@ function nextLevel() {
 function startUserPattern() {
   let userPattern = gameVars.userPattern;
   if (userPattern.length !== window.boxPattern.length) {
-    for (let i in userPattern) {
-      if (userPattern[i] != window.boxPattern[i]) {
-        loseGame();
-      }
-    }
+    userPattern.some(incorrectGuess)
   } else if (userPattern[userPattern.length - 1] != window.boxPattern[window.boxPattern.length - 1]) {
     loseGame();
   } else {
     nextLevel();
     reset();
   }
+}
+
+function incorrectGuess (el, i, arr) {
+  if (arr[i] != window.boxPattern[i])
+  return loseGame();
 }
 
 function startPlayback(marker, speed) {
