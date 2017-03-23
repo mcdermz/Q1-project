@@ -2,6 +2,7 @@ let gameVars = {
   hints: 2,
   uI: true,
   userRecord: false,
+  userGuess: false,
   userPattern: [],
   level: 1,
   initial: -1,
@@ -10,6 +11,7 @@ let gameVars = {
 function reset() {
   gameVars.uI = true;
   gameVars.userRecord = false;
+  gameVars.userGuess = false;
   gameVars.userPattern = [];
 }
 
@@ -63,7 +65,7 @@ function autoPlayNext(marker, speed) {
     startPlayback(marker, speed);
   } else {
     gameVars.uI = true;
-    gameVars.userRecord = true;
+    gameVars.userGuess = true;
   }
 }
 

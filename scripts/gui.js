@@ -19,7 +19,7 @@ $('body').on('keydown keyup', function (e) {
 });
 
 $('body').on('keyup', function (e) {
-  if (gameVars.userRecord) {
+  if (gameVars.userGuess) {
     hotKeysUp(e);
     startUserPattern();
   }
@@ -75,7 +75,7 @@ function mouseupGUI () {
   if (gameVars.uI && $(this).hasClass('clicked')) {
     endBoxAction($(this))
   }
-  if (gameVars.userRecord && $boxNum !== undefined) {
+  if (gameVars.userGuess && $boxNum !== undefined) {
     gameVars.userPattern.push($boxNum);
     startUserPattern();
   }
