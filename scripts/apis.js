@@ -1,5 +1,3 @@
-console.log('apis sanity!!!');
-
 window.storedPattern;
 
 getStoredPattern(false);
@@ -15,8 +13,6 @@ function patternIncrement(pattern, level) {
   let end = begin + level + 1;
   gameVars.initial += level;
   gameVars.level++;
-  console.log(level);
-  console.log(pattern.slice(begin, end));
   return pattern.slice(begin, end);
 }
 

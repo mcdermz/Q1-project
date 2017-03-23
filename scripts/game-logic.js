@@ -1,5 +1,3 @@
-console.log('game-logic sanity check!');
-
 let gameVars = {
   hints: 2,
   uI: true,
@@ -23,7 +21,6 @@ function winGame() {
 
 function nextLevel() {
   let level = gameVars.level;
-  console.log('You win! Get ready for level ' + level + '!')
   $('#start-btn').removeClass('scale-out').addClass('scale-in').text('LEVEL ' + level + ': GO!');
   $('#hint-btn').removeClass('scale-in').addClass('scale-out');
   $('.user-score').addClass('scale-in').removeClass('scale-out');
@@ -65,7 +62,6 @@ function autoPlayNext(marker, speed) {
   if (marker < window.boxPattern.length) {
     startPlayback(marker, speed);
   } else {
-    console.log('pattern is done, your turn!')
     gameVars.uI = true;
     gameVars.userRecord = true;
   }
@@ -86,7 +82,6 @@ function $autoPlayBox(boxActive, speed) {
 }
 
 function loseGame() {
-  console.log('You lose!');
   reset();
   $('#hint-btn').addClass('scale-out').removeClass('scale-in');
   $('#loser-btn').addClass('scale-in').removeClass('scale-out').on('click', youLoseBtn);

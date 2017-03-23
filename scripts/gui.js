@@ -1,5 +1,3 @@
-console.log('gui sanity check!');
-
 $(document).on('load', function () {
   reset();
 });
