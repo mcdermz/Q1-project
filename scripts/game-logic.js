@@ -16,7 +16,7 @@ function reset() {
 }
 
 function winGame() {
-  if (gameVars.level === 11){
+  if (gameVars.level === 11) {
     alert('YOU WIN');
   }
 }
@@ -45,37 +45,44 @@ function startUserPattern() {
   }
 }
 
-function incorrectGuess (el, i, arr) {
+function incorrectGuess(el, i, arr) {
   if (arr[i] != window.boxPattern[i])
-  return loseGame();
+    return loseGame();
 }
 
-function startPlayback(marker, speed) {
-  let s = speed || 450;
+function startPlayback(marker, speed = 450) {
   gameVars.uI = false;
   let boxNum = window.boxPattern[marker]
   let boxActive = `#${boxNum}`;
-  $.when($(boxActive)
+  $.when($autoPlayBox(boxActive, speed))
+    .done(function () {
+      marker++;
+      autoPlayNext(marker, speed);
+    });
+}
+
+function autoPlayNext(marker, speed) {
+  if (marker < window.boxPattern.length) {
+    startPlayback(marker, speed);
+  } else {
+    console.log('pattern is done, your turn!')
+    gameVars.uI = true;
+    gameVars.userRecord = true;
+  }
+}
+
+function $autoPlayBox(boxActive, speed) {
+  return $(boxActive)
     .animate({
       opacity: '1'
-    }, s, 'linear', function () {
+    }, speed, 'linear', function () {
       startBoxAction($(boxActive))
     })
     .animate({
       opacity: '1'
-    }, s, 'linear', function () {
+    }, speed, 'linear', function () {
       endBoxAction($(boxActive))
     })
-  ).done(function () {
-    marker++;
-    if (marker < window.boxPattern.length) {
-      startPlayback(marker, s);
-    } else {
-      console.log('pattern is done, your turn!')
-      gameVars.uI = true;
-      gameVars.userRecord = true;
-    }
-  });
 }
 
 function loseGame() {
