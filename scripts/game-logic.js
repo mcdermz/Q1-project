@@ -1,6 +1,7 @@
 let gameVars = {
   hints: 2,
   uI: true,
+  isPlaying: false,
   userGuess: false,
   userPattern: [],
   level: 1,
@@ -62,7 +63,9 @@ function startPlayback(marker, speed = 450) {
 function autoPlayNext(marker, speed) {
   if (marker < window.boxPattern.length) {
     startPlayback(marker, speed);
-  } else {
+  } else if (recordVars.isArmed()){
+    startPlayback(0);
+  } else if (gameVars.isPlaying){
     gameVars.uI = true;
     gameVars.userGuess = true;
   }

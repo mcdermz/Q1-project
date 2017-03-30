@@ -21,12 +21,17 @@
     <audio id="b1" src="assets/audio/b-tone.mp3"></audio>
     <audio id="c8" src="assets/audio/c8-tone.mp3"></audio>
     <div class="container">
-      <form action="#">
-        <p>
-          <input type="checkbox" class="filled-in" id="user-record"/>
-          <label for="user-record">Record Arm</label>
-        </p>
-      </form>
+        <form action="#">
+          <div class="row">
+              <p class="col-s3">
+                <input type="checkbox" class="filled-in" id="user-record"/>
+                <label for="user-record">Record Arm</label>
+              </p>
+            <div class="col s3">
+              <a id="playback-btn" class="waves-effect waves-light btn blue scale-transition scale-in disabled">start playback</a>
+            </div>
+          </div>
+        </form>
       <div class="game-gui unselectable">
         <div class="row">
           <div id="1" class="col s2 offset-s1 red">
