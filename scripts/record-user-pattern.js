@@ -9,10 +9,11 @@ function playbackButton() {
   let $playback = $('#playback-btn');
   $playback.toggleClass('start-playback');
   if ($playback.hasClass('start-playback')){
-    $playback.text('stop playback')
+    $playback.text('stop playback');
     startPlayback(0);
   } else {
-    $playback.text('start playback')
+    $playback.text('start playback');
+    gameVars.uI = true;
   }
 }
 
