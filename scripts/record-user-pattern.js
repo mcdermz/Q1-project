@@ -13,8 +13,12 @@ function userRecord() {
 }
 
 function recordToPattern (boxNum){
+  let userPattern = recordVars.userPattern
   if (recordVars.isArmed() && boxNum !== undefined) {
-    recordVars.userPattern.push(boxNum);
-    console.log(recordVars.userPattern);
+    userPattern.push(boxNum);
+    console.log(userPattern);
+  }
+  if (userPattern.length > 0){
+    $('#playback-btn, #clear-btn').removeClass('disabled')
   }
 }
