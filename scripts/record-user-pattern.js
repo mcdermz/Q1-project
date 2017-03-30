@@ -10,10 +10,10 @@ $('#clear-btn').click(clearButton)
 function playbackButton() {
   let $playback = $('#playback-btn');
   $playback.toggleClass('start-playback');
+  
   if ($('#user-record').prop('checked')){
     $('#user-record').prop('checked', false)
   }
-
   if ($playback.hasClass('start-playback')){
     $playback.text('stop playback');
     startPlayback(0);
