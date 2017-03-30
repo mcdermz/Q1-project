@@ -3,6 +3,19 @@ let recordVars = {
   userPattern: [],
 }
 
+$('#playback-btn').click(playbackButton)
+
+function playbackButton() {
+  let $playback = $('#playback-btn');
+  $playback.toggleClass('start-playback');
+  if ($playback.hasClass('start-playback')){
+    $playback.text('stop playback')
+    startPlayback(0);
+  } else {
+    $playback.text('start playback')
+  }
+}
+
 function userRecord() {
  if ($('#user-record').prop('checked')){
    gameVars.isPlaying = false;
