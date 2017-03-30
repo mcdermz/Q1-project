@@ -5,6 +5,8 @@ let recordVars = {
 
 $('#playback-btn').click(playbackButton)
 
+$('#clear-btn').click(clearButton)
+
 function playbackButton() {
   let $playback = $('#playback-btn');
   $playback.toggleClass('start-playback');
@@ -19,6 +21,13 @@ function playbackButton() {
     $playback.text('start playback');
     gameVars.uI = true;
   }
+}
+
+function clearButton() {
+  $('#playback-btn').removeClass('start-playback');
+  recordVars.userPattern = [];
+  $('#playback-btn, #clear-btn').addClass('disabled');
+  gameVars.uI = true;
 }
 
 function userRecord() {
