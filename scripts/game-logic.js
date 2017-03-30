@@ -67,7 +67,7 @@ function autoPlayNext(marker, speed) {
   if (marker < boxPattern.length) {
     startPlayback(marker, speed);
   } else if ($('#playback-btn').hasClass('start-playback')){
-    startPlayback(0);
+    startPlayback(0, 75);
   } else if (gameVars.isPlaying){
     gameVars.uI = true;
     gameVars.userGuess = true;
