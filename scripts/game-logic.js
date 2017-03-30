@@ -51,7 +51,7 @@ function incorrectGuess(el, i, arr) {
 
 function startPlayback(marker, speed = 450) {
   gameVars.uI = false;
-  let boxNum = window.boxPattern[marker]
+  let boxNum = gameVars.isPlaying ?  window.boxPattern[marker] : recordVars.userPattern[marker];
   let boxActive = `#${boxNum}`;
   $.when($autoPlayBox(boxActive, speed))
     .done(function () {
@@ -61,7 +61,8 @@ function startPlayback(marker, speed = 450) {
 }
 
 function autoPlayNext(marker, speed) {
-  if (marker < window.boxPattern.length) {
+  let boxPattern = gameVars.isPlaying ? window.boxPattern : recordVars.userPattern;
+  if (marker < boxPattern.length) {
     startPlayback(marker, speed);
   } else if (recordVars.isArmed()){
     startPlayback(0);

@@ -26,6 +26,10 @@ $('body').on('keyup', function (e) {
   recordToPattern(keyAction[e.which]);
 });
 
+$('#playback-btn').click(function () {
+  startPlayback(0)
+})
+
 let keyAction = {
   81: '1',
   87: '2',
