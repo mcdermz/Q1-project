@@ -66,7 +66,7 @@ function autoPlayNext(marker, speed) {
   let boxPattern = gameVars.isPlaying ? window.boxPattern : recordVars.userPattern;
   if (marker < boxPattern.length) {
     startPlayback(marker, speed);
-  } else if (recordVars.isArmed()){
+  } else if ($('#playback-btn').hasClass('start-playback')){
     startPlayback(0);
   } else if (gameVars.isPlaying){
     gameVars.uI = true;
