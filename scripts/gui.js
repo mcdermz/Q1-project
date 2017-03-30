@@ -27,7 +27,8 @@ $('body').on('keyup', function (e) {
 });
 
 $('#playback-btn').click(function () {
-  startPlayback(0)
+  startPlayback(0);
+  $(this).toggleClass('start-playback');
 })
 
 let keyAction = {

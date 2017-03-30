@@ -56,7 +56,9 @@ function startPlayback(marker, speed = 450) {
   $.when($autoPlayBox(boxActive, speed))
     .done(function () {
       marker++;
-      autoPlayNext(marker, speed);
+      if (gameVars.isPlaying || $('#playback-btn').hasClass('start-playback')){
+        autoPlayNext(marker, speed);
+      }
     });
 }
 
